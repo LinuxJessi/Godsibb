@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Godsibb.net - Xeno Archive{% endblock %}</title>
+    
+    <!-- Separated Stylesheets - Browser loads only what's needed -->
+    <link rel="stylesheet" href="/static/css/base.css') }}">
+    <link rel="stylesheet" href="/static/css/desktop.css') }}" media="(min-width: 901px)">
+    <link rel="stylesheet" href="/static/css/mobile.css') }}" media="(max-width: 900px)">
+    <link rel="stylesheet" href="https://use.typekit.net/syn2dzv.css">
+</head>
+<body>
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- DESKTOP LAYOUT (screens > 900px) -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    
+    <!-- Top Navigation Bar (Desktop) -->
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <button class="top-bar-toggle" onclick="toggleNavFold()" style="margin-right: 10px;">
+                <span id="navFoldText">◀ Nav</span>
+            </button>
+            <a href="https://scientia.godsibb.net" class="top-bar-link">Scientia</a>
+            <a href="https://unus-mund.us" class="top-bar-link">Unus-Mund.us</a>
+        </div>
+        <div class="top-bar-right">
+            <div class="social-icons">
+                <a href="#" class="social-icon" title="Twitter">𝕏</a>
+                <a href="#" class="social-icon" title="Tumblr">t</a>
+                <a href="#" class="social-icon" title="Reddit">⬆</a>
+                <a href="#" class="social-icon" title="Mastodon">🐘</a>
+            </div>
+            <button class="top-bar-toggle" onclick="toggleDarkMode()">
+                <span id="modeText">Dark</span>
+            </button>
+            <button class="top-bar-toggle" onclick="togglePattern()">
+                <span id="patternText">Hide BG</span>
+            </button>
+            <button class="top-bar-toggle" onclick="toggleChatFold()">
+                <span id="chatFoldText">Chat ▶</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Navigation Toggle Button (Hamburger Menu - Tablet Only) -->
+    <button class="nav-toggle" onclick="toggleNav()">
+        <span id="navText">☰ MENU</span>
+    </button>
+
+    <!-- Navigation Panel (Fixed Position - Desktop/Tablet) -->
+    <div class="panel nav-panel" id="navPanel">
+        <div class="panel-header">
+            <div class="panel-title">Navigation</div>
+            <div class="pips">
+                <div class="pip active"></div>
+                <div class="pip active"></div>
+                <div class="pip"></div>
+            </div>
+        </div>
+        <div class="panel-content">
+            <a href="/" style="text-decoration: none; color: inherit;">
+                <div class="nav-item">Home</div>
+            </a>
+            <div class="nav-item">Image Gallery</div>
+            <div class="nav-item">Download Archive</div>
+            <div class="nav-item">Preservation Tools</div>
+            <div class="nav-item">Lore Database</div>
+            <div class="nav-item">Content Catalog</div>
+            <div class="nav-item">Fan Creations</div>
+            <a href="/blog" style="text-decoration: none; color: inherit;">
+                <div class="nav-item">Community Blog</div>
+            </a>
+            <div class="nav-item">Our Story</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Header with Logo -->
+        <div class="header">
+            <div class="logo-container">
+                <a href="/" style="text-decoration: none;">
+            <!---     <img src="/static/images/Godsibb_logo.png') }}" 
+                         alt="Godsibb Logo" 
+                         style="width: 100%; height: 100%; object-fit: contain;">-->   
+                         <h1>Godsibb.net</h1>
+                </a>
+                <div class="tagline">{% block header_subtitle %}Archiving Xeno since 2009{% endblock %}</div>
+            </div>
+            <div class="character-image">
+                 <img src="/static/images/melia.png') }}" 
+                         alt="Godsibb Logo" 
+                         style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+        </div>
+
+        <!-- Main Grid (Desktop) -->
+        <div class="main-grid" id="mainGrid">
+            <!-- Center Content Panel -->
+            <div class="panel center-panel">
+                <div class="panel-header">
+                    <div class="panel-title">{% block header_title %}Welcome{% endblock %}</div>
+                    <div class="pips">
+                        <div class="pip active"></div>
+                        <div class="pip active"></div>
+                        <div class="pip active"></div>
+                    </div>
+                </div>
+                <div class="panel-content">
+                    {% block content %}
+                    <div class="post-meta">
+                        <span class="post-author">Posted by: Jessi</span> • <span class="post-date">January 6, 2026</span>
+                    </div>
+                    <h1 class="title">Default Content</h1>
+                    <p class="content" style="line-height: 1.6;"></p>                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Panel (Fixed Position - Desktop/Tablet) -->
+    <div class="panel chat-panel">
+        <div class="panel-header">
+            <div class="panel-title">Chat</div>
+            <div class="pips">
+                <div class="pip active"></div>
+                <div class="pip active"></div>
+                <div class="pip active"></div>
+            </div>
+        </div>
+        <div class="panel-content">
+            <div class="chat-message">
+                <div class="chat-user">MeliaFan2009</div>
+                <div class="chat-text">Just found rare concept art!</div>
+            </div>
+            <div class="chat-message">
+                <div class="chat-user">ZoharSeeker</div>
+                <div class="chat-text">The new gallery layout looks amazing!</div>
+            </div>
+            <div class="chat-message">
+                <div class="chat-user">MonadoTime</div>
+                <div class="chat-text">This site is getting better every day</div>
+            </div>
+            <div class="chat-message">
+                <div class="chat-user">KOS-MOSv5</div>
+                <div class="chat-text">Love the Melia theme! Can we get KOS-MOS blue next?</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- MOBILE LAYOUT (screens ≤ 900px) -->
+    <!-- Same content as desktop, styled differently via mobile.css -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+
+
+    <!-- Bottom Navigation Bar (Mobile) -->
+    <div class="bottom-nav">
+        <a href="/" style="text-decoration: none; color: inherit;">
+            <div class="nav-item active" onclick="setActiveNav(this)">
+                <div class="nav-icon">🏠</div>
+                <div>Home</div>
+            </div>
+        </a>
+        <div class="nav-item" onclick="setActiveNav(this)">
+            <div class="nav-icon">📷</div>
+            <div>Gallery</div>
+        </div>
+        <div class="nav-item" onclick="setActiveNav(this)">
+            <div class="nav-icon">📰</div>
+            <div>Articles</div>
+        </div>
+        <a href="/blog" style="text-decoration: none; color: inherit;">
+            <div class="nav-item" onclick="setActiveNav(this)">
+                <div class="nav-icon">📝</div>
+                <div>Blog</div>
+            </div>
+        </a>
+        <div class="nav-item" onclick="setActiveNav(this)">
+            <div class="nav-icon">⚙️</div>
+            <div>More</div>
+        </div>
+    </div>
+
+    <!-- Floating Chat Button (Mobile) -->
+    <div class="chat-fab has-badge" onclick="toggleChatSheet()">💬</div>
+
+    <!-- Chat Bottom Sheet (Mobile) -->
+    <div class="chat-sheet" id="chatSheet">
+        <div class="chat-header">
+            <span>Community Chat</span>
+            <button class="chat-close" onclick="toggleChatSheet()">✕</button>
+        </div>
+        <div class="chat-messages">
+            <div class="chat-message">
+                <div class="chat-user">MeliaFan2009</div>
+                <div class="chat-text">Just found rare concept art!</div>
+            </div>
+            <div class="chat-message">
+                <div class="chat-user">ZoharSeeker</div>
+                <div class="chat-text">The new gallery layout looks amazing!</div>
+            </div>
+            <div class="chat-message">
+                <div class="chat-user">MonadoTime</div>
+                <div class="chat-text">This site is getting better every day</div>
+            </div>
+            <div class="chat-message">
+                <div class="chat-user">KOS-MOSv5</div>
+                <div class="chat-text">Love the theme! Can we get KOS-MOS blue next?</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Backdrop Overlay (Mobile) -->
+    <div class="backdrop" id="backdrop" onclick="toggleChatSheet()"></div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>Navigation</h4>
+                <a href="/">Home</a>
+                <a href="#">Xenosaga</a>
+                <a href="#">Xenogears</a>
+                <a href="#">Xenoblade</a>
+                <a href="#">About</a>
+            </div>
+            <div class="footer-column">
+                <h4>Community</h4>
+                <a href="https://scientia.godsibb.net">Scientia Forum</a>
+                <a href="https://unus-mund.us">unus-mund.us</a>
+                <a href="#">Discord</a>
+                <a href="#">Contribute</a>
+            </div>
+            <div class="footer-column">
+                <h4>Resources</h4>
+                <a href="#">Downloads</a>
+                <a href="#">Fan Art Guidelines</a>
+                <a href="#">API Documentation</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2026 Godsibb.net - Archiving Xeno since 2009
+        </div>
+    </footer>
+
+    <script>
+        // ═══════════════════════════════════════════════════════════════
+        // THEME TOGGLES (Work on both desktop & mobile)
+        // ═══════════════════════════════════════════════════════════════
+
+        // Dark mode toggle
+        function toggleDarkMode() {
+            const body = document.body;
+            const modeText = document.getElementById('modeText');
+            
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                modeText.textContent = 'Light';
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                modeText.textContent = 'Dark';
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        }
+
+        // Background pattern toggle
+        function togglePattern() {
+            const body = document.body;
+            const patternText = document.getElementById('patternText');
+            
+            body.classList.toggle('hide-pattern');
+            
+            if (body.classList.contains('hide-pattern')) {
+                patternText.textContent = 'Show BG';
+                localStorage.setItem('pattern', 'hidden');
+            } else {
+                patternText.textContent = 'Hide BG';
+                localStorage.setItem('pattern', 'visible');
+            }
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // DESKTOP NAVIGATION & CHAT PANELS
+        // ═══════════════════════════════════════════════════════════════
+
+        // Navigation fold/unfold toggle
+        function toggleNavFold() {
+            const navPanel = document.getElementById('navPanel');
+            const mainGrid = document.getElementById('mainGrid');
+            const navFoldText = document.getElementById('navFoldText');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const isMobile = window.innerWidth <= 1200;
+            
+            if (isMobile) {
+                // Tablet/Mobile: Toggle hamburger menu
+                navPanel.classList.toggle('active');
+            } else {
+                // Desktop: Toggle fold/unfold
+                const isHidden = navPanel.classList.contains('folded') || 
+                               (navPanel.classList.contains('auto-hidden') && !navPanel.classList.contains('user-opened'));
+                
+                if (isHidden) {
+                    navPanel.classList.remove('folded');
+                    navPanel.classList.remove('auto-hidden');
+                    navPanel.classList.add('user-opened');
+                    
+                    if (scrollTop > 50) {  // Changed from 100 to 50
+                        mainGrid.classList.add('nav-open');
+                    }
+                    
+                    navFoldText.textContent = '◀ Nav';
+                    localStorage.setItem('navFolded', 'false');
+                } else {
+                    navPanel.classList.add('folded');
+                    navPanel.classList.remove('user-opened');
+                    navPanel.classList.remove('auto-hidden');
+                    mainGrid.classList.remove('nav-open');
+                    navFoldText.textContent = '▶ Nav';
+                    localStorage.setItem('navFolded', 'true');
+                }
+            }
+        }
+
+        // Chat fold/unfold toggle
+        function toggleChatFold() {
+            const chatPanel = document.querySelector('.chat-panel');
+            const mainGrid = document.getElementById('mainGrid');
+            const chatFoldText = document.getElementById('chatFoldText');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            const isHidden = chatPanel.classList.contains('folded') || 
+                           (chatPanel.classList.contains('auto-hidden') && !chatPanel.classList.contains('user-opened'));
+            
+            if (isHidden) {
+                chatPanel.classList.remove('folded');
+                chatPanel.classList.remove('auto-hidden');
+                chatPanel.classList.add('user-opened');
+                
+                if (scrollTop > 50) {  // Changed from 100 to 50
+                    mainGrid.classList.add('chat-open');
+                }
+                
+                chatFoldText.textContent = '◀ Chat';
+                localStorage.setItem('chatFolded', 'false');
+            } else {
+                chatPanel.classList.add('folded');
+                chatPanel.classList.remove('user-opened');
+                chatPanel.classList.remove('auto-hidden');
+                mainGrid.classList.remove('chat-open');
+                chatFoldText.textContent = 'Chat ▶';
+                localStorage.setItem('chatFolded', 'true');
+            }
+        }
+
+        // Scroll detection for auto-hide panels (Desktop only)
+        let scrollTimeout;
+        window.addEventListener('scroll', () => {
+            if (window.innerWidth <= 900) return; // Skip on mobile
+            
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const navPanel = document.getElementById('navPanel');
+                const chatPanel = document.querySelector('.chat-panel');
+                const mainGrid = document.getElementById('mainGrid');
+                
+                if (scrollTop > 50) {  // Trigger at 50px instead of 100px
+                    const navIsManuallyOpen = navPanel.classList.contains('user-opened');
+                    const chatIsManuallyOpen = chatPanel.classList.contains('user-opened');
+                    
+                    if (!navPanel.classList.contains('folded') && !navIsManuallyOpen) {
+                        navPanel.classList.add('auto-hidden');
+                    }
+                    if (!chatPanel.classList.contains('folded') && !chatIsManuallyOpen) {
+                        chatPanel.classList.add('auto-hidden');
+                    }
+                    
+                    mainGrid.classList.toggle('nav-open', navIsManuallyOpen);
+                    mainGrid.classList.toggle('chat-open', chatIsManuallyOpen);
+                } else {
+                    navPanel.classList.remove('auto-hidden');
+                    chatPanel.classList.remove('auto-hidden');
+                    mainGrid.classList.remove('nav-open');
+                    mainGrid.classList.remove('chat-open');
+                }
+            }, 50); // Reduced from 100ms to 50ms for more responsive feel
+        });
+
+        // Navigation panel toggle (for tablet)
+        function toggleNav() {
+            const navPanel = document.getElementById('navPanel');
+            navPanel.classList.toggle('active');
+        }
+
+        // Close nav when clicking outside on tablet
+        document.addEventListener('click', (e) => {
+            const navPanel = document.getElementById('navPanel');
+            const navToggle = document.querySelector('.nav-toggle');
+            
+            if (window.innerWidth <= 1200 && 
+                !navPanel.contains(e.target) && 
+                navToggle && !navToggle.contains(e.target) &&
+                navPanel.classList.contains('active')) {
+                navPanel.classList.remove('active');
+            }
+        });
+
+        // ═══════════════════════════════════════════════════════════════
+        // MOBILE BOTTOM NAV & CHAT SHEET
+        // ═══════════════════════════════════════════════════════════════
+
+        // Set active nav item (mobile)
+        function setActiveNav(element) {
+            document.querySelectorAll('.bottom-nav .nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            element.classList.add('active');
+        }
+
+        // Toggle chat bottom sheet (mobile)
+        function toggleChatSheet() {
+            const sheet = document.getElementById('chatSheet');
+            const backdrop = document.getElementById('backdrop');
+            sheet.classList.toggle('open');
+            backdrop.classList.toggle('show');
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // LOAD SAVED PREFERENCES
+        // ═══════════════════════════════════════════════════════════════
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const darkMode = localStorage.getItem('darkMode');
+            const pattern = localStorage.getItem('pattern');
+            const navFolded = localStorage.getItem('navFolded');
+            const chatFolded = localStorage.getItem('chatFolded');
+            
+            // Apply dark mode
+            if (darkMode === 'enabled') {
+                document.body.classList.add('dark-mode');
+                const modeText = document.getElementById('modeText');
+                if (modeText) modeText.textContent = 'Light';
+            }
+            
+            // Apply pattern preference
+            if (pattern === 'hidden') {
+                document.body.classList.add('hide-pattern');
+                const patternText = document.getElementById('patternText');
+                if (patternText) patternText.textContent = 'Show BG';
+            }
+
+            // Apply nav fold preference (desktop only)
+            if (window.innerWidth > 1200) {
+                const navPanel = document.getElementById('navPanel');
+                const navFoldText = document.getElementById('navFoldText');
+                
+                if (navFolded === 'true') {
+                    navPanel.classList.add('folded');
+                    if (navFoldText) navFoldText.textContent = '▶ Nav';
+                } else {
+                    if (navFoldText) navFoldText.textContent = '◀ Nav';
+                }
+
+                // Apply chat fold preference (desktop only)
+                const chatPanel = document.querySelector('.chat-panel');
+                const chatFoldText = document.getElementById('chatFoldText');
+                
+                if (chatFolded === 'true') {
+                    chatPanel.classList.add('folded');
+                    if (chatFoldText) chatFoldText.textContent = 'Chat ▶';
+                } else {
+                    if (chatFoldText) chatFoldText.textContent = '◀ Chat';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
