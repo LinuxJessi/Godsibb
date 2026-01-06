@@ -1,0 +1,238 @@
+/*************************************
+ * LAYOUT STRUCTURE
+ * Core layout components
+ *************************************/
+
+/* Fluid width container */
+.container {
+    width: 100%;
+    max-width: 1400px; /* Maximum width for large screens */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Top Navigation */
+.hero {
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+}
+
+.hero .container {
+    padding: 0 20px; /* Add padding inside container */
+}
+
+/* Side Navigation */
+.menu {
+    position: sticky;
+    top: 100px; /* Stick below header */
+    padding-right: 20px;
+}
+
+.menu-list a {
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+.menu-list a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+.menu-list a.is-active {
+    font-weight: bold;
+}
+
+/* Main Content Area */
+.column > .section {
+    padding: 1.5rem 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Fluid width footer */
+.footer {
+    padding: 2rem 0;
+    margin-top: 3rem;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/*************************************
+ * RESPONSIVE DESIGN
+ * Mobile-first approach
+ *************************************/
+
+/* Mobile layout (default) */
+.columns {
+    display: flex;
+    flex-direction: column;
+}
+
+.column {
+    flex: 1;
+}
+
+/* Tablet and above */
+@media (min-width: 769px) {
+    .columns {
+        flex-direction: row;
+    }
+    
+    .column.is-one-quarter {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .container {
+        padding: 0 40px;
+    }
+}
+
+/*************************************
+ * UTILITY CLASSES
+ * For layout control
+ *************************************/
+
+/* Full width sections */
+.is-fullwidth {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+
+/* Flexible grid */
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.grid-item {
+    flex: 1 1 300px;
+}
+/*************************************
+ * LAYOUT STRUCTURE
+ * Core layout components
+ *************************************/
+
+/* Fluid width container */
+.container {
+    width: 100%;
+    max-width: 1400px; /* Maximum width for large screens */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Top Navigation */
+.hero {
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+}
+
+.hero .container {
+    padding: 0 20px; /* Add padding inside container */
+}
+
+/* Side Navigation */
+.menu {
+    position: sticky;
+    top: 100px; /* Stick below header */
+    padding-right: 20px;
+}
+
+.menu-list a {
+    color: var(--primary-color);
+    transition: color 0.3s ease;
+}
+
+.menu-list a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+.menu-list a.is-active {
+    font-weight: bold;
+}
+
+/* Main Content Area */
+.column > .section {
+    padding: 1.5rem 2rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Fluid width footer */
+.footer {
+    padding: 2rem 0;
+    margin-top: 3rem;
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/*************************************
+ * RESPONSIVE DESIGN
+ * Mobile-first approach
+ *************************************/
+
+/* Mobile layout (default) */
+.columns {
+    display: flex;
+    flex-direction: column;
+}
+
+.column {
+    flex: 1;
+}
+
+/* Tablet and above */
+@media (min-width: 769px) {
+    .columns {
+        flex-direction: row;
+    }
+    
+    .column.is-one-quarter {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .container {
+        padding: 0 40px;
+    }
+}
+
+/*************************************
+ * UTILITY CLASSES
+ * For layout control
+ *************************************/
+
+/* Full width sections */
+.is-fullwidth {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+
+/* Flexible grid */
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.grid-item {
+    flex: 1 1 300px;
+}

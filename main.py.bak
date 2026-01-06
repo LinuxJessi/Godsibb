@@ -1,0 +1,29 @@
+from fastapi import FastAPI, Request
+from fastapi.responses import HTMLResponse
+from fastapi.staticfiles import StaticFiles
+from fastapi.templating import Jinja2Templates
+from pathlib import Path
+
+app = FastAPI()
+templates = Jinja2Templates(directory="templates")
+
+
+# Get the directory where your main.py is located
+BASE_DIR = Path(__file__).resolve().parent
+
+# If your static folder is at 'C:\project\static'
+# and main.py is at 'C:\project\main.py':
+static_dir = BASE_DIR / "static"
+
+app.mount("/static", StaticFiles(directory=str(static_dir)), name="static")
+
+# Static files (for future CSS/JS)
+#app.mount("\static", StaticFiles(directory="static"), name="static")
+
+@app.get("/", response_class=HTMLResponse)
+async def home(request: Request):
+    return templates.TemplateResponse("home.html", {"request": request})
+
+@app.get("/blog", response_class=HTMLResponse)
+async def blog(request: Request):
+    return templates.TemplateResponse("blog.html", {"request": request})

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Godsibb.net{% endblock %}</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1 class="site-title">Godsibb.net</h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="https://scientia.godsibb.net">Scientia</a></li>
+                    <li><a href="https://unus-mundus.godsibb.net">Unus-Mundus</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container main-content">
+        <aside class="sidebar">
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/blog">Blog</a></li>
+                    <li><a href="/articles">Articles</a></li>
+                    <li><a href="/gallery">Gallery</a></li>
+                    <li><a href="/downloads">Downloads</a></li>
+                    <li><a href="/database">Database</a></li>
+                    <li><a href="/fan-content">Fan Content</a></li>
+                    <li><a href="/games">Games</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <main class="content-area">
+            <div class="content-section">
+                {% block content %}
+                <h2>Welcome to Godsibb.net</h2>
+                <p>Your hub for Xenosaga, Xenogears, and Xenoblade content!</p>
+                {% endblock %}
+            </div>
+        </main>
+    </div>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; 2024 Godsibb.net. All rights reserved.</p>
+            <p>Contact: retro@godsibb.net</p>
+        </div>
+    </footer>
+</body>
+</html>
