@@ -255,22 +255,38 @@ body {
 
 .pips {
     display: flex;
-    gap: 6px;
+    gap: 3px; /* Gap reduced by ~50% to match new size */
 }
 
 .pip {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    border: 2px solid var(--border);
-    background: rgba(255, 255, 255, 0.3);
+  position: relative;
+  width: 15px; /* Reduced by 50% from 30px */
+  aspect-ratio: 1 / 1; 
+  background: gray; 
+  border: 1px solid black; /* Border reduced by 50% from 2px */
+  /* Drop shadow applied to the box itself */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  /* Remove any previous text-shadow or box-shadow rules here */
+}
+
+.pip::before {
+  content: "\00D7"; 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px; /* Reduced by 50% from 24px */
+  color: white;
+  line-height: 1;
+  /* Ensure no text-shadow is present here */
+  text-shadow: none; 
 }
 
 .pip.active {
     background: var(--accent-bright);
-    box-shadow: 0 0 8px var(--accent-bright);
     animation: pulse 2s ease-in-out infinite;
 }
+
 
 /* Hide hamburger on desktop */
 .nav-toggle {
