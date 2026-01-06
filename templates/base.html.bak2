@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Godsibb.net - Melia Theme</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <button class="top-bar-toggle" onclick="toggleNavFold()" style="margin-right: 10px;">
+                <span id="navFoldText">◀ Nav</span>
+            </button>
+            <a href="#" class="top-bar-link">Scientia</a>
+            <a href="#" class="top-bar-link">Unus-Mund.us</a>
+        </div>
+        <div class="top-bar-right">
+            <div class="social-icons">
+                <a href="#" class="social-icon" title="Twitter">𝕏</a>
+                <a href="#" class="social-icon" title="Tumblr">t</a>
+                <a href="#" class="social-icon" title="Reddit">⬆</a>
+                <a href="#" class="social-icon" title="Mastodon">🐘</a>
+            </div>
+            <button class="top-bar-toggle" onclick="toggleDarkMode()">
+                <span id="modeText">Dark</span>
+            </button>
+            <button class="top-bar-toggle" onclick="toggleCheckerboard()">
+                <span id="checkerText">Hide BG</span>
+            </button>
+            <button class="top-bar-toggle" onclick="toggleChatFold()">
+                <span id="chatFoldText">Chat ▶</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Navigation Toggle Button (Hamburger Menu - Mobile Only) -->
+    <button class="nav-toggle" onclick="toggleNav()">
+        <span id="navText">☰ MENU</span>
+    </button>
+
+    <!-- Navigation Panel (Fixed Position) -->
+    <div class="panel nav-panel" id="navPanel">
+        <div class="panel-header">
+            <div class="panel-title">Navigation</div>
+            <div class="pips">
+                <div class="pip active"></div>
+                <div class="pip active"></div>
+                <div class="pip"></div>
+            </div>
+        </div>
+        <div class="panel-content">
+            <div class="nav-item">Xenosaga Gallery</div>
+            <div class="nav-item">Xenogears Archive</div>
+            <div class="nav-item">Xenoblade Collection</div>
+            <div class="nav-item">Lore Database</div>
+            <div class="nav-item">Fan Creations</div>
+            <div class="nav-item">Community</div>
+            <div class="nav-item">Settings</div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo-placeholder">
+                <div style="font-size: 2em; margin-bottom: 10px;">350 x 350</div>
+                <div>Logo Image</div>
+                <div>Placeholder</div>
+                <div class="tagline">Archiving Xeno since 2009</div>
+            </div>
+            <div class="character-placeholder">
+                350 x 350<br>Character Image<br>Placeholder
+            </div>
+        </div>
+
+        <!-- Main Grid -->
+        <div class="main-grid" id="mainGrid">
+            <!-- Center Content Panel -->
+            <div class="panel center-panel">
+                <div class="panel-header">
+                    <div class="panel-title">Lorem Ipsum</div>
+                    <div class="pips">
+                        <div class="pip active"></div>
+                        <div class="pip active"></div>
+                        <div class="pip active"></div>
+                    </div>
+                </div>
+                <div class="panel-content">
+                    <div class="post-meta">
+                        {% block content %}
+                        <span class="post-author">Posted by: Jessi</span> • <span class="post-date">January 5, 2026</span>
+                        {% endblock %}
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chat Panel (Fixed Position, Outside Grid) -->
+    <div class="panel chat-panel">
+                <div class="panel-header">
+                    <div class="panel-title">Chat</div>
+                    <div class="pips">
+                        <div class="pip active"></div>
+                        <div class="pip active"></div>
+                        <div class="pip active"></div>
+                    </div>
+                </div>
+                <div class="panel-content">
+                    <div class="chat-message">
+                        <div class="chat-user">MeliaFan2009</div>
+                        <div class="chat-text">Just found rare concept art!</div>
+                    </div>
+                    <div class="chat-message">
+                        <div class="chat-user">ZoharSeeker</div>
+                        <div class="chat-text">The new gallery layout looks amazing!</div>
+                    </div>
+                    <div class="chat-message">
+                        <div class="chat-user">MonadoTime</div>
+                        <div class="chat-text">This site is getting better every day</div>
+                    </div>
+                    <div class="chat-message">
+                        <div class="chat-user">KOS-MOSv5</div>
+                        <div class="chat-text">Love the Melia theme! Can we get KOS-MOS blue next?</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h4>Navigation</h4>
+                <a href="#">Home</a>
+                <a href="#">Xenosaga</a>
+                <a href="#">Xenogears</a>
+                <a href="#">Xenoblade</a>
+                <a href="#">About</a>
+            </div>
+            <div class="footer-column">
+                <h4>Community</h4>
+                <a href="#">Scientia Forum</a>
+                <a href="#">unus-mund.us</a>
+                <a href="#">Discord</a>
+                <a href="#">Contribute</a>
+            </div>
+            <div class="footer-column">
+                <h4>Resources</h4>
+                <a href="#">Downloads</a>
+                <a href="#">Fan Art Guidelines</a>
+                <a href="#">API Documentation</a>
+                <a href="#">Contact</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2026 Godsibb.net - Archiving Xeno since 2009
+        </div>
+    </footer>
+
+    <script>
+        // Dark mode toggle
+        function toggleDarkMode() {
+            const body = document.body;
+            const modeText = document.getElementById('modeText');
+            
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                modeText.textContent = 'Light Mode';
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                modeText.textContent = 'Dark Mode';
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        }
+
+        // Checkerboard toggle
+        function toggleCheckerboard() {
+            const body = document.body;
+            const checkerText = document.getElementById('checkerText');
+            
+            body.classList.toggle('hide-checkerboard');
+            
+            if (body.classList.contains('hide-checkerboard')) {
+                checkerText.textContent = 'Show BG';
+                localStorage.setItem('checkerboard', 'hidden');
+            } else {
+                checkerText.textContent = 'Hide BG';
+                localStorage.setItem('checkerboard', 'visible');
+            }
+        }
+
+        // Navigation fold/unfold toggle
+        function toggleNavFold() {
+            const navPanel = document.getElementById('navPanel');
+            const mainGrid = document.getElementById('mainGrid');
+            const navFoldText = document.getElementById('navFoldText');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Check if panel is currently visible (not hidden by either method)
+            const isHidden = navPanel.classList.contains('folded') || 
+                           (navPanel.classList.contains('auto-hidden') && !navPanel.classList.contains('user-opened'));
+            
+            if (isHidden) {
+                // User is opening nav
+                navPanel.classList.remove('folded');
+                navPanel.classList.remove('auto-hidden');
+                navPanel.classList.add('user-opened');
+                
+                // Only shrink content if we're scrolled down (panel would cover content)
+                if (scrollTop > 100) {
+                    mainGrid.classList.add('nav-open');
+                }
+                
+                navFoldText.textContent = '◀ Nav';
+                localStorage.setItem('navFolded', 'false');
+            } else {
+                // User is closing nav
+                navPanel.classList.add('folded');
+                navPanel.classList.remove('user-opened');
+                navPanel.classList.remove('auto-hidden');
+                mainGrid.classList.remove('nav-open');
+                navFoldText.textContent = '▶ Nav';
+                localStorage.setItem('navFolded', 'true');
+            }
+        }
+
+        // Chat fold/unfold toggle
+        function toggleChatFold() {
+            const chatPanel = document.querySelector('.chat-panel');
+            const mainGrid = document.getElementById('mainGrid');
+            const chatFoldText = document.getElementById('chatFoldText');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Check if panel is currently visible (not hidden by either method)
+            const isHidden = chatPanel.classList.contains('folded') || 
+                           (chatPanel.classList.contains('auto-hidden') && !chatPanel.classList.contains('user-opened'));
+            
+            if (isHidden) {
+                // User is opening chat
+                chatPanel.classList.remove('folded');
+                chatPanel.classList.remove('auto-hidden');
+                chatPanel.classList.add('user-opened');
+                
+                // Only shrink content if we're scrolled down (panel would cover content)
+                if (scrollTop > 100) {
+                    mainGrid.classList.add('chat-open');
+                }
+                
+                chatFoldText.textContent = '◀ Chat';
+                localStorage.setItem('chatFolded', 'false');
+            } else {
+                // User is closing chat
+                chatPanel.classList.add('folded');
+                chatPanel.classList.remove('user-opened');
+                chatPanel.classList.remove('auto-hidden');
+                mainGrid.classList.remove('chat-open');
+                chatFoldText.textContent = 'Chat ▶';
+                localStorage.setItem('chatFolded', 'true');
+            }
+        }
+
+        // Scroll detection for auto-hide panels
+        let lastScrollTop = 0;
+        let scrollTimeout;
+        
+        window.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            
+            scrollTimeout = setTimeout(() => {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const navPanel = document.getElementById('navPanel');
+                const chatPanel = document.querySelector('.chat-panel');
+                const mainGrid = document.getElementById('mainGrid');
+                
+                if (scrollTop > 100) {
+                    // Scrolled down - auto-hide panels
+                    const navIsManuallyOpen = navPanel.classList.contains('user-opened');
+                    const chatIsManuallyOpen = chatPanel.classList.contains('user-opened');
+                    
+                    if (!navPanel.classList.contains('folded') && !navIsManuallyOpen) {
+                        navPanel.classList.add('auto-hidden');
+                    }
+                    if (!chatPanel.classList.contains('folded') && !chatIsManuallyOpen) {
+                        chatPanel.classList.add('auto-hidden');
+                    }
+                    
+                    // Shrink content ONLY if panels are manually opened
+                    if (!navIsManuallyOpen) {
+                        mainGrid.classList.remove('nav-open');
+                    } else {
+                        mainGrid.classList.add('nav-open');
+                    }
+                    
+                    if (!chatIsManuallyOpen) {
+                        mainGrid.classList.remove('chat-open');
+                    } else {
+                        mainGrid.classList.add('chat-open');
+                    }
+                } else {
+                    // Near top - show panels, content at full width
+                    navPanel.classList.remove('auto-hidden');
+                    chatPanel.classList.remove('auto-hidden');
+                    
+                    // At top, panels don't shrink content (they're in header area)
+                    mainGrid.classList.remove('nav-open');
+                    mainGrid.classList.remove('chat-open');
+                }
+                
+                lastScrollTop = scrollTop;
+            }, 100);
+        });
+
+        // Navigation panel toggle (for mobile)
+        function toggleNav() {
+            const navPanel = document.getElementById('navPanel');
+            navPanel.classList.toggle('active');
+        }
+
+        // Close nav when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            const navPanel = document.getElementById('navPanel');
+            const navToggle = document.querySelector('.nav-toggle');
+            
+            if (window.innerWidth <= 1200 && 
+                !navPanel.contains(e.target) && 
+                !navToggle.contains(e.target) &&
+                navPanel.classList.contains('active')) {
+                navPanel.classList.remove('active');
+            }
+        });
+
+        // Load saved preferences
+        window.addEventListener('DOMContentLoaded', () => {
+            const darkMode = localStorage.getItem('darkMode');
+            const checkerboard = localStorage.getItem('checkerboard');
+            const navFolded = localStorage.getItem('navFolded');
+            const chatFolded = localStorage.getItem('chatFolded');
+            const modeText = document.getElementById('modeText');
+            const checkerText = document.getElementById('checkerText');
+            const navFoldText = document.getElementById('navFoldText');
+            const chatFoldText = document.getElementById('chatFoldText');
+            const navPanel = document.getElementById('navPanel');
+            const chatPanel = document.querySelector('.chat-panel');
+            
+            // Apply dark mode preference
+            if (darkMode === 'enabled') {
+                document.body.classList.add('dark-mode');
+                modeText.textContent = 'Light';
+            }
+            
+            // Apply checkerboard preference
+            if (checkerboard === 'hidden') {
+                document.body.classList.add('hide-checkerboard');
+                checkerText.textContent = 'Show BG';
+            }
+
+            // Apply nav fold preference
+            if (navFolded === 'true') {
+                navPanel.classList.add('folded');
+                navFoldText.textContent = '▶ Nav';
+            } else {
+                // Start visible, not shrinking content
+                navFoldText.textContent = '◀ Nav';
+            }
+
+            // Apply chat fold preference
+            if (chatFolded === 'true') {
+                chatPanel.classList.add('folded');
+                chatFoldText.textContent = 'Chat ▶';
+            } else {
+                // Start visible, not shrinking content
+                chatFoldText.textContent = '◀ Chat';
+            }
+        });
+    </script>
+</body>
+</html>

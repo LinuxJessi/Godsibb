@@ -1,0 +1,479 @@
+/*************************************
+ * GODSIBB BASE STYLES
+ * Shared across all screen sizes
+ * Theme-agnostic foundation
+ *************************************/
+
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+/*************************************
+ * RESET & GLOBAL STYLES
+ *************************************/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*************************************
+ * THEME SYSTEM
+ * All themes must define these variables
+ * Currently: Melia (purple/cyan theme)
+ *************************************/
+
+:root {
+    /* Theme Colors - Light Mode */
+    --primary: #8B5CF6;
+    --primary-dark: #6D28D9;
+    --accent: #06B6D4;
+    --accent-bright: #22D3EE;
+    --highlight: #F59E0B;
+    --background: #DDD6F3;
+    --content: #FFFFFF;
+    --text: #3F3F46;
+    --border: #000000;
+    
+    /* Pattern Colors */
+    --pattern-light: #C4B5FD;
+    --pattern-mid: #06B6D4;
+    --pattern-dark: #A78BFA;
+}
+
+body.dark-mode {
+    /* Theme Colors - Dark Mode */
+    --primary: #A78BFA;
+    --primary-dark: #8B5CF6;
+    --accent: #22D3EE;
+    --accent-bright: #67E8F9;
+    --highlight: #FCD34D;
+    --background: #1E1B4B;
+    --content: #312E81;
+    --text: #E9D5FF;
+    --border: #4C1D95;
+    
+    /* Pattern Colors */
+    --pattern-light: #4C1D95;
+    --pattern-mid: #22D3EE;
+    --pattern-dark: #3B0764;
+}
+
+/*************************************
+ * BODY & BASE LAYOUT
+ *************************************/
+
+body {
+    font-family: 'Courier New', monospace;
+    background: var(--background);
+    color: var(--text);
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/*************************************
+ * ANIMATED BACKGROUND PATTERN
+ * Sharp wavy stripes with 3-color rotation
+ *************************************/
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        /* Left waves */
+        radial-gradient(
+            ellipse 300% 80% at -50% 30%,
+            transparent 0%, transparent 15%,
+            var(--pattern-light) 15%, var(--pattern-light) 18%,
+            var(--pattern-mid) 18%, var(--pattern-mid) 21%,
+            var(--pattern-dark) 21%, var(--pattern-dark) 24%,
+            var(--pattern-light) 24%, var(--pattern-light) 27%,
+            var(--pattern-mid) 27%, var(--pattern-mid) 30%,
+            var(--pattern-dark) 30%, var(--pattern-dark) 33%,
+            var(--pattern-light) 33%, var(--pattern-light) 36%,
+            var(--pattern-mid) 36%, var(--pattern-mid) 39%,
+            var(--pattern-dark) 39%, var(--pattern-dark) 42%,
+            var(--pattern-light) 42%, var(--pattern-light) 45%,
+            var(--pattern-mid) 45%, var(--pattern-mid) 48%,
+            var(--pattern-dark) 48%, var(--pattern-dark) 51%,
+            transparent 51%
+        ),
+        /* Right waves */
+        radial-gradient(
+            ellipse 300% 80% at 150% 70%,
+            transparent 0%, transparent 15%,
+            var(--pattern-dark) 15%, var(--pattern-dark) 18%,
+            var(--pattern-mid) 18%, var(--pattern-mid) 21%,
+            var(--pattern-light) 21%, var(--pattern-light) 24%,
+            var(--pattern-dark) 24%, var(--pattern-dark) 27%,
+            var(--pattern-mid) 27%, var(--pattern-mid) 30%,
+            var(--pattern-light) 30%, var(--pattern-light) 33%,
+            var(--pattern-dark) 33%, var(--pattern-dark) 36%,
+            var(--pattern-mid) 36%, var(--pattern-mid) 39%,
+            var(--pattern-light) 39%, var(--pattern-light) 42%,
+            var(--pattern-dark) 42%, var(--pattern-dark) 45%,
+            var(--pattern-mid) 45%, var(--pattern-mid) 48%,
+            var(--pattern-light) 48%, var(--pattern-light) 51%,
+            transparent 51%
+        ),
+        /* Center waves */
+        radial-gradient(
+            ellipse 250% 90% at 50% 50%,
+            transparent 0%, transparent 20%,
+            var(--pattern-mid) 20%, var(--pattern-mid) 23%,
+            var(--pattern-light) 23%, var(--pattern-light) 26%,
+            var(--pattern-dark) 26%, var(--pattern-dark) 29%,
+            var(--pattern-mid) 29%, var(--pattern-mid) 32%,
+            var(--pattern-light) 32%, var(--pattern-light) 35%,
+            var(--pattern-dark) 35%, var(--pattern-dark) 38%,
+            var(--pattern-mid) 38%, var(--pattern-mid) 41%,
+            var(--pattern-light) 41%, var(--pattern-light) 44%,
+            transparent 44%
+        );
+    background-color: var(--background);
+    pointer-events: none;
+    z-index: 0;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+/* Subtle vignette overlay */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+        ellipse at 50% 50%, 
+        transparent 40%, 
+        rgba(0, 0, 0, 0.05) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Pattern toggle */
+body.hide-pattern::before {
+    opacity: 0;
+}
+
+/*************************************
+ * TYPOGRAPHY
+ *************************************/
+
+.retro-text {
+    font-family: 'VT323', monospace;
+    letter-spacing: 1px;
+}
+
+/*************************************
+ * PANELS & CONTAINERS
+ *************************************/
+
+.panel {
+    background: var(--content);
+    border: 4px solid var(--border);
+    transition: all 0.3s ease;
+}
+
+.panel-header {
+    background: var(--primary);
+    color: white;
+    padding: 12px;
+    border-bottom: 3px solid var(--border);
+    font-family: 'VT323', monospace;
+    font-size: 1.3em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.panel-content {
+    padding: 15px;
+    min-height: 200px;
+    font-size: 0.95em;
+    line-height: 1.5;
+}
+
+/*************************************
+ * HEADER & LOGO
+ *************************************/
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+    position: relative;
+    padding: 40px 20px 20px 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 40px;
+}
+
+.logo-container {
+    width: 350px;
+    height: 350px;
+    border: none;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 20px;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.tagline {
+    font-family: 'VT323', monospace;
+    font-size: 1.4em;
+    color: var(--highlight);
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
+    letter-spacing: 2px;
+}
+
+.character-image {
+    width: 350px;
+    height: 350px;
+    border: 4px dashed var(--border);
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text);
+    font-family: 'VT323', monospace;
+    font-size: 1.2em;
+    text-align: center;
+    padding: 20px;
+    transition: all 0.3s ease;
+    opacity: 0.5;
+    flex-shrink: 0;
+}
+
+.character-image:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/*************************************
+ * NAVIGATION ITEMS
+ *************************************/
+
+.nav-item {
+    padding: 8px 10px;
+    margin-bottom: 6px;
+    background: rgba(139, 92, 246, 0.1);
+    border: 2px solid transparent;
+    border-left: 4px solid var(--accent);
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.nav-item:hover {
+    background: var(--primary);
+    color: white;
+    border-color: var(--border);
+    transform: translateX(5px);
+}
+
+body.dark-mode .nav-item {
+    background: rgba(167, 139, 250, 0.1);
+}
+
+/*************************************
+ * CHAT MESSAGES
+ *************************************/
+
+.chat-message {
+    margin-bottom: 10px;
+    padding: 8px;
+    background: rgba(139, 92, 246, 0.05);
+    border-left: 3px solid var(--primary);
+    border: 2px solid var(--border);
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.chat-user {
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 3px;
+    font-size: 0.9em;
+    line-height: 1.2;
+    transition: color 0.3s ease;
+}
+
+.chat-text {
+    font-size: 0.85em;
+    color: var(--text);
+    line-height: 1.3;
+}
+
+body.dark-mode .chat-message {
+    background: rgba(167, 139, 250, 0.05);
+}
+
+/*************************************
+ * POST METADATA
+ *************************************/
+
+.post-meta {
+    font-family: 'VT323', monospace;
+    font-size: 1.1em;
+    color: var(--primary);
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+}
+
+.post-author {
+    font-weight: bold;
+    color: var(--accent);
+}
+
+.post-date {
+    color: var(--text);
+    opacity: 0.7;
+}
+
+/*************************************
+ * FOOTER
+ *************************************/
+
+.footer {
+    margin-top: 15px;
+    padding: 15px 20px;
+    text-align: center;
+    color: var(--text);
+    font-family: 'VT323', monospace;
+    position: relative;
+    z-index: 2;
+}
+
+.footer-content {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    text-align: center;
+}
+
+.footer-column h4 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.footer-column p, 
+.footer-column a {
+    font-size: 1em;
+    line-height: 1.4;
+    margin-bottom: 5px;
+    display: block;
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-column a:hover {
+    color: var(--primary);
+}
+
+.footer-bottom {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 2px solid var(--primary);
+    font-size: 1em;
+    opacity: 0.8;
+}
+
+/*************************************
+ * CONTENT STYLING (Bulma-compatible)
+ *************************************/
+
+.title {
+    font-family: 'VT323', monospace;
+    font-size: 2em;
+    color: var(--primary);
+    margin: 20px 0 10px 0;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    font-family: 'VT323', monospace;
+    font-size: 1.3em;
+    color: var(--accent);
+    margin: 10px 0 20px 0;
+    letter-spacing: 1px;
+}
+
+.content {
+    line-height: 1.6;
+    margin: 15px 0;
+}
+
+.content p {
+    margin-bottom: 15px;
+}
+
+.content h1, .content h2, .content h3 {
+    font-family: 'VT323', monospace;
+    color: var(--primary);
+    margin: 20px 0 10px 0;
+}
+
+/*************************************
+ * ANIMATIONS
+ *************************************/
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+}
+
+/*************************************
+ * RESPONSIVE IMAGE SCALING
+ *************************************/
+
+@media (max-width: 1400px) {
+    .logo-container,
+    .character-image {
+        width: 280px;
+        height: 280px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .logo-container,
+    .character-image {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .header {
+        gap: 20px;
+    }
+}

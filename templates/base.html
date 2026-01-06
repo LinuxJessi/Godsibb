@@ -3,18 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Godsibb.net - Melia Theme</title>
-    <link rel="stylesheet" href="{{ url_for('static', path='css/style.css') }}">
+    <title>{% block title %}Godsibb.net - Xeno Archive{% endblock %}</title>
+    
+    <!-- Separated Stylesheets - Browser loads only what's needed -->
+    <link rel="stylesheet" href="{{ url_for('static', path='css/base.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/desktop.css') }}" media="(min-width: 901px)">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/mobile.css') }}" media="(max-width: 900px)">
 </head>
 <body>
-    <!-- Top Navigation Bar -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- DESKTOP LAYOUT (screens > 900px) -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    
+    <!-- Top Navigation Bar (Desktop) -->
     <div class="top-bar">
         <div class="top-bar-left">
             <button class="top-bar-toggle" onclick="toggleNavFold()" style="margin-right: 10px;">
                 <span id="navFoldText">◀ Nav</span>
             </button>
-            <a href="#" class="top-bar-link">Scientia</a>
-            <a href="#" class="top-bar-link">Unus-Mund.us</a>
+            <a href="https://scientia.godsibb.net" class="top-bar-link">Scientia</a>
+            <a href="https://unus-mund.us" class="top-bar-link">Unus-Mund.us</a>
         </div>
         <div class="top-bar-right">
             <div class="social-icons">
@@ -26,8 +34,8 @@
             <button class="top-bar-toggle" onclick="toggleDarkMode()">
                 <span id="modeText">Dark</span>
             </button>
-            <button class="top-bar-toggle" onclick="toggleCheckerboard()">
-                <span id="checkerText">Hide BG</span>
+            <button class="top-bar-toggle" onclick="togglePattern()">
+                <span id="patternText">Hide BG</span>
             </button>
             <button class="top-bar-toggle" onclick="toggleChatFold()">
                 <span id="chatFoldText">Chat ▶</span>
@@ -35,12 +43,12 @@
         </div>
     </div>
 
-    <!-- Navigation Toggle Button (Hamburger Menu - Mobile Only) -->
+    <!-- Navigation Toggle Button (Hamburger Menu - Tablet Only) -->
     <button class="nav-toggle" onclick="toggleNav()">
         <span id="navText">☰ MENU</span>
     </button>
 
-    <!-- Navigation Panel (Fixed Position) -->
+    <!-- Navigation Panel (Fixed Position - Desktop/Tablet) -->
     <div class="panel nav-panel" id="navPanel">
         <div class="panel-header">
             <div class="panel-title">Navigation</div>
@@ -51,36 +59,43 @@
             </div>
         </div>
         <div class="panel-content">
+            <a href="/" style="text-decoration: none; color: inherit;">
+                <div class="nav-item">Home</div>
+            </a>
             <div class="nav-item">Xenosaga Gallery</div>
             <div class="nav-item">Xenogears Archive</div>
             <div class="nav-item">Xenoblade Collection</div>
             <div class="nav-item">Lore Database</div>
             <div class="nav-item">Fan Creations</div>
-            <div class="nav-item">Community</div>
+            <a href="/blog" style="text-decoration: none; color: inherit;">
+                <div class="nav-item">Blog</div>
+            </a>
             <div class="nav-item">Settings</div>
         </div>
     </div>
 
     <div class="container">
-        <!-- Header -->
+        <!-- Header with Logo -->
         <div class="header">
-            <div class="logo-placeholder">
-                <div style="font-size: 2em; margin-bottom: 10px;">350 x 350</div>
-                <div>Logo Image</div>
-                <div>Placeholder</div>
-                <div class="tagline">Archiving Xeno since 2009</div>
+            <div class="logo-container">
+                <a href="/" style="text-decoration: none;">
+                    <img src="{{ url_for('static', path='images/Godsibb_logo.png') }}" 
+                         alt="Godsibb Logo" 
+                         style="width: 100%; height: 100%; object-fit: contain;">
+                </a>
+                <div class="tagline">{% block header_subtitle %}Archiving Xeno since 2009{% endblock %}</div>
             </div>
-            <div class="character-placeholder">
+            <div class="character-image">
                 350 x 350<br>Character Image<br>Placeholder
             </div>
         </div>
 
-        <!-- Main Grid -->
+        <!-- Main Grid (Desktop) -->
         <div class="main-grid" id="mainGrid">
             <!-- Center Content Panel -->
             <div class="panel center-panel">
                 <div class="panel-header">
-                    <div class="panel-title">Lorem Ipsum</div>
+                    <div class="panel-title">{% block header_title %}Welcome{% endblock %}</div>
                     <div class="pips">
                         <div class="pip active"></div>
                         <div class="pip active"></div>
@@ -88,55 +103,120 @@
                     </div>
                 </div>
                 <div class="panel-content">
+                    {% block content %}
                     <div class="post-meta">
-                        {% block content %}
-                        <span class="post-author">Posted by: Jessi</span> • <span class="post-date">January 5, 2026</span>
-                        {% endblock %}
+                        <span class="post-author">Posted by: Jessi</span> • <span class="post-date">January 6, 2026</span>
                     </div>
-                   
+                    <h1 class="title" style="font-family: 'VT323', monospace; font-size: 2em; color: var(--primary); margin: 20px 0;">Default Content</h1>
+                    <p class="content" style="line-height: 1.6;">This is the default content. Override the content block in your template.</p>
+                    {% endblock %}
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Chat Panel (Fixed Position, Outside Grid) -->
+    <!-- Chat Panel (Fixed Position - Desktop/Tablet) -->
     <div class="panel chat-panel">
-                <div class="panel-header">
-                    <div class="panel-title">Chat</div>
-                    <div class="pips">
-                        <div class="pip active"></div>
-                        <div class="pip active"></div>
-                        <div class="pip active"></div>
-                    </div>
-                </div>
-                <div class="panel-content">
-                    <div class="chat-message">
-                        <div class="chat-user">MeliaFan2009</div>
-                        <div class="chat-text">Just found rare concept art!</div>
-                    </div>
-                    <div class="chat-message">
-                        <div class="chat-user">ZoharSeeker</div>
-                        <div class="chat-text">The new gallery layout looks amazing!</div>
-                    </div>
-                    <div class="chat-message">
-                        <div class="chat-user">MonadoTime</div>
-                        <div class="chat-text">This site is getting better every day</div>
-                    </div>
-                    <div class="chat-message">
-                        <div class="chat-user">KOS-MOSv5</div>
-                        <div class="chat-text">Love the Melia theme! Can we get KOS-MOS blue next?</div>
-                    </div>
-                </div>
+        <div class="panel-header">
+            <div class="panel-title">Chat</div>
+            <div class="pips">
+                <div class="pip active"></div>
+                <div class="pip active"></div>
+                <div class="pip active"></div>
+            </div>
+        </div>
+        <div class="panel-content">
+            <div class="chat-message">
+                <div class="chat-user">MeliaFan2009</div>
+                <div class="chat-text">Just found rare concept art!</div>
+            </div>
+            <div class="chat-message">
+                <div class="chat-user">ZoharSeeker</div>
+                <div class="chat-text">The new gallery layout looks amazing!</div>
+            </div>
+            <div class="chat-message">
+                <div class="chat-user">MonadoTime</div>
+                <div class="chat-text">This site is getting better every day</div>
+            </div>
+            <div class="chat-message">
+                <div class="chat-user">KOS-MOSv5</div>
+                <div class="chat-text">Love the Melia theme! Can we get KOS-MOS blue next?</div>
             </div>
         </div>
     </div>
+
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+    <!-- MOBILE LAYOUT (screens ≤ 900px) -->
+    <!-- Same content as desktop, styled differently via mobile.css -->
+    <!-- ═══════════════════════════════════════════════════════════════════ -->
+
+
+    <!-- Bottom Navigation Bar (Mobile) -->
+    <div class="bottom-nav">
+        <a href="/" style="text-decoration: none; color: inherit;">
+            <div class="nav-item active" onclick="setActiveNav(this)">
+                <div class="nav-icon">🏠</div>
+                <div>Home</div>
+            </div>
+        </a>
+        <div class="nav-item" onclick="setActiveNav(this)">
+            <div class="nav-icon">📷</div>
+            <div>Gallery</div>
+        </div>
+        <div class="nav-item" onclick="setActiveNav(this)">
+            <div class="nav-icon">📰</div>
+            <div>Articles</div>
+        </div>
+        <a href="/blog" style="text-decoration: none; color: inherit;">
+            <div class="nav-item" onclick="setActiveNav(this)">
+                <div class="nav-icon">📝</div>
+                <div>Blog</div>
+            </div>
+        </a>
+        <div class="nav-item" onclick="setActiveNav(this)">
+            <div class="nav-icon">⚙️</div>
+            <div>More</div>
+        </div>
+    </div>
+
+    <!-- Floating Chat Button (Mobile) -->
+    <div class="chat-fab has-badge" onclick="toggleChatSheet()">💬</div>
+
+    <!-- Chat Bottom Sheet (Mobile) -->
+    <div class="chat-sheet" id="chatSheet">
+        <div class="chat-header">
+            <span>Community Chat</span>
+            <button class="chat-close" onclick="toggleChatSheet()">✕</button>
+        </div>
+        <div class="chat-messages">
+            <div class="chat-message">
+                <div class="chat-user">MeliaFan2009</div>
+                <div class="chat-text">Just found rare concept art!</div>
+            </div>
+            <div class="chat-message">
+                <div class="chat-user">ZoharSeeker</div>
+                <div class="chat-text">The new gallery layout looks amazing!</div>
+            </div>
+            <div class="chat-message">
+                <div class="chat-user">MonadoTime</div>
+                <div class="chat-text">This site is getting better every day</div>
+            </div>
+            <div class="chat-message">
+                <div class="chat-user">KOS-MOSv5</div>
+                <div class="chat-text">Love the theme! Can we get KOS-MOS blue next?</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Backdrop Overlay (Mobile) -->
+    <div class="backdrop" id="backdrop" onclick="toggleChatSheet()"></div>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-column">
                 <h4>Navigation</h4>
-                <a href="#">Home</a>
+                <a href="/">Home</a>
                 <a href="#">Xenosaga</a>
                 <a href="#">Xenogears</a>
                 <a href="#">Xenoblade</a>
@@ -144,8 +224,8 @@
             </div>
             <div class="footer-column">
                 <h4>Community</h4>
-                <a href="#">Scientia Forum</a>
-                <a href="#">unus-mund.us</a>
+                <a href="https://scientia.godsibb.net">Scientia Forum</a>
+                <a href="https://unus-mund.us">unus-mund.us</a>
                 <a href="#">Discord</a>
                 <a href="#">Contribute</a>
             </div>
@@ -163,6 +243,10 @@
     </footer>
 
     <script>
+        // ═══════════════════════════════════════════════════════════════
+        // THEME TOGGLES (Work on both desktop & mobile)
+        // ═══════════════════════════════════════════════════════════════
+
         // Dark mode toggle
         function toggleDarkMode() {
             const body = document.body;
@@ -171,29 +255,33 @@
             body.classList.toggle('dark-mode');
             
             if (body.classList.contains('dark-mode')) {
-                modeText.textContent = 'Light Mode';
+                modeText.textContent = 'Light';
                 localStorage.setItem('darkMode', 'enabled');
             } else {
-                modeText.textContent = 'Dark Mode';
+                modeText.textContent = 'Dark';
                 localStorage.setItem('darkMode', 'disabled');
             }
         }
 
-        // Checkerboard toggle
-        function toggleCheckerboard() {
+        // Background pattern toggle
+        function togglePattern() {
             const body = document.body;
-            const checkerText = document.getElementById('checkerText');
+            const patternText = document.getElementById('patternText');
             
-            body.classList.toggle('hide-checkerboard');
+            body.classList.toggle('hide-pattern');
             
-            if (body.classList.contains('hide-checkerboard')) {
-                checkerText.textContent = 'Show BG';
-                localStorage.setItem('checkerboard', 'hidden');
+            if (body.classList.contains('hide-pattern')) {
+                patternText.textContent = 'Show BG';
+                localStorage.setItem('pattern', 'hidden');
             } else {
-                checkerText.textContent = 'Hide BG';
-                localStorage.setItem('checkerboard', 'visible');
+                patternText.textContent = 'Hide BG';
+                localStorage.setItem('pattern', 'visible');
             }
         }
+
+        // ═══════════════════════════════════════════════════════════════
+        // DESKTOP NAVIGATION & CHAT PANELS
+        // ═══════════════════════════════════════════════════════════════
 
         // Navigation fold/unfold toggle
         function toggleNavFold() {
@@ -201,32 +289,35 @@
             const mainGrid = document.getElementById('mainGrid');
             const navFoldText = document.getElementById('navFoldText');
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const isMobile = window.innerWidth <= 1200;
             
-            // Check if panel is currently visible (not hidden by either method)
-            const isHidden = navPanel.classList.contains('folded') || 
-                           (navPanel.classList.contains('auto-hidden') && !navPanel.classList.contains('user-opened'));
-            
-            if (isHidden) {
-                // User is opening nav
-                navPanel.classList.remove('folded');
-                navPanel.classList.remove('auto-hidden');
-                navPanel.classList.add('user-opened');
-                
-                // Only shrink content if we're scrolled down (panel would cover content)
-                if (scrollTop > 100) {
-                    mainGrid.classList.add('nav-open');
-                }
-                
-                navFoldText.textContent = '◀ Nav';
-                localStorage.setItem('navFolded', 'false');
+            if (isMobile) {
+                // Tablet/Mobile: Toggle hamburger menu
+                navPanel.classList.toggle('active');
             } else {
-                // User is closing nav
-                navPanel.classList.add('folded');
-                navPanel.classList.remove('user-opened');
-                navPanel.classList.remove('auto-hidden');
-                mainGrid.classList.remove('nav-open');
-                navFoldText.textContent = '▶ Nav';
-                localStorage.setItem('navFolded', 'true');
+                // Desktop: Toggle fold/unfold
+                const isHidden = navPanel.classList.contains('folded') || 
+                               (navPanel.classList.contains('auto-hidden') && !navPanel.classList.contains('user-opened'));
+                
+                if (isHidden) {
+                    navPanel.classList.remove('folded');
+                    navPanel.classList.remove('auto-hidden');
+                    navPanel.classList.add('user-opened');
+                    
+                    if (scrollTop > 50) {  // Changed from 100 to 50
+                        mainGrid.classList.add('nav-open');
+                    }
+                    
+                    navFoldText.textContent = '◀ Nav';
+                    localStorage.setItem('navFolded', 'false');
+                } else {
+                    navPanel.classList.add('folded');
+                    navPanel.classList.remove('user-opened');
+                    navPanel.classList.remove('auto-hidden');
+                    mainGrid.classList.remove('nav-open');
+                    navFoldText.textContent = '▶ Nav';
+                    localStorage.setItem('navFolded', 'true');
+                }
             }
         }
 
@@ -237,25 +328,21 @@
             const chatFoldText = document.getElementById('chatFoldText');
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
             
-            // Check if panel is currently visible (not hidden by either method)
             const isHidden = chatPanel.classList.contains('folded') || 
                            (chatPanel.classList.contains('auto-hidden') && !chatPanel.classList.contains('user-opened'));
             
             if (isHidden) {
-                // User is opening chat
                 chatPanel.classList.remove('folded');
                 chatPanel.classList.remove('auto-hidden');
                 chatPanel.classList.add('user-opened');
                 
-                // Only shrink content if we're scrolled down (panel would cover content)
-                if (scrollTop > 100) {
+                if (scrollTop > 50) {  // Changed from 100 to 50
                     mainGrid.classList.add('chat-open');
                 }
                 
                 chatFoldText.textContent = '◀ Chat';
                 localStorage.setItem('chatFolded', 'false');
             } else {
-                // User is closing chat
                 chatPanel.classList.add('folded');
                 chatPanel.classList.remove('user-opened');
                 chatPanel.classList.remove('auto-hidden');
@@ -265,21 +352,19 @@
             }
         }
 
-        // Scroll detection for auto-hide panels
-        let lastScrollTop = 0;
+        // Scroll detection for auto-hide panels (Desktop only)
         let scrollTimeout;
-        
         window.addEventListener('scroll', () => {
-            clearTimeout(scrollTimeout);
+            if (window.innerWidth <= 900) return; // Skip on mobile
             
+            clearTimeout(scrollTimeout);
             scrollTimeout = setTimeout(() => {
                 const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
                 const navPanel = document.getElementById('navPanel');
                 const chatPanel = document.querySelector('.chat-panel');
                 const mainGrid = document.getElementById('mainGrid');
                 
-                if (scrollTop > 100) {
-                    // Scrolled down - auto-hide panels
+                if (scrollTop > 50) {  // Trigger at 50px instead of 100px
                     const navIsManuallyOpen = navPanel.classList.contains('user-opened');
                     const chatIsManuallyOpen = chatPanel.classList.contains('user-opened');
                     
@@ -290,92 +375,102 @@
                         chatPanel.classList.add('auto-hidden');
                     }
                     
-                    // Shrink content ONLY if panels are manually opened
-                    if (!navIsManuallyOpen) {
-                        mainGrid.classList.remove('nav-open');
-                    } else {
-                        mainGrid.classList.add('nav-open');
-                    }
-                    
-                    if (!chatIsManuallyOpen) {
-                        mainGrid.classList.remove('chat-open');
-                    } else {
-                        mainGrid.classList.add('chat-open');
-                    }
+                    mainGrid.classList.toggle('nav-open', navIsManuallyOpen);
+                    mainGrid.classList.toggle('chat-open', chatIsManuallyOpen);
                 } else {
-                    // Near top - show panels, content at full width
                     navPanel.classList.remove('auto-hidden');
                     chatPanel.classList.remove('auto-hidden');
-                    
-                    // At top, panels don't shrink content (they're in header area)
                     mainGrid.classList.remove('nav-open');
                     mainGrid.classList.remove('chat-open');
                 }
-                
-                lastScrollTop = scrollTop;
-            }, 100);
+            }, 50); // Reduced from 100ms to 50ms for more responsive feel
         });
 
-        // Navigation panel toggle (for mobile)
+        // Navigation panel toggle (for tablet)
         function toggleNav() {
             const navPanel = document.getElementById('navPanel');
             navPanel.classList.toggle('active');
         }
 
-        // Close nav when clicking outside on mobile
+        // Close nav when clicking outside on tablet
         document.addEventListener('click', (e) => {
             const navPanel = document.getElementById('navPanel');
             const navToggle = document.querySelector('.nav-toggle');
             
             if (window.innerWidth <= 1200 && 
                 !navPanel.contains(e.target) && 
-                !navToggle.contains(e.target) &&
+                navToggle && !navToggle.contains(e.target) &&
                 navPanel.classList.contains('active')) {
                 navPanel.classList.remove('active');
             }
         });
 
-        // Load saved preferences
+        // ═══════════════════════════════════════════════════════════════
+        // MOBILE BOTTOM NAV & CHAT SHEET
+        // ═══════════════════════════════════════════════════════════════
+
+        // Set active nav item (mobile)
+        function setActiveNav(element) {
+            document.querySelectorAll('.bottom-nav .nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            element.classList.add('active');
+        }
+
+        // Toggle chat bottom sheet (mobile)
+        function toggleChatSheet() {
+            const sheet = document.getElementById('chatSheet');
+            const backdrop = document.getElementById('backdrop');
+            sheet.classList.toggle('open');
+            backdrop.classList.toggle('show');
+        }
+
+        // ═══════════════════════════════════════════════════════════════
+        // LOAD SAVED PREFERENCES
+        // ═══════════════════════════════════════════════════════════════
+
         window.addEventListener('DOMContentLoaded', () => {
             const darkMode = localStorage.getItem('darkMode');
-            const checkerboard = localStorage.getItem('checkerboard');
+            const pattern = localStorage.getItem('pattern');
             const navFolded = localStorage.getItem('navFolded');
             const chatFolded = localStorage.getItem('chatFolded');
-            const modeText = document.getElementById('modeText');
-            const checkerText = document.getElementById('checkerText');
-            const navFoldText = document.getElementById('navFoldText');
-            const chatFoldText = document.getElementById('chatFoldText');
-            const navPanel = document.getElementById('navPanel');
-            const chatPanel = document.querySelector('.chat-panel');
             
-            // Apply dark mode preference
+            // Apply dark mode
             if (darkMode === 'enabled') {
                 document.body.classList.add('dark-mode');
-                modeText.textContent = 'Light';
+                const modeText = document.getElementById('modeText');
+                if (modeText) modeText.textContent = 'Light';
             }
             
-            // Apply checkerboard preference
-            if (checkerboard === 'hidden') {
-                document.body.classList.add('hide-checkerboard');
-                checkerText.textContent = 'Show BG';
+            // Apply pattern preference
+            if (pattern === 'hidden') {
+                document.body.classList.add('hide-pattern');
+                const patternText = document.getElementById('patternText');
+                if (patternText) patternText.textContent = 'Show BG';
             }
 
-            // Apply nav fold preference
-            if (navFolded === 'true') {
-                navPanel.classList.add('folded');
-                navFoldText.textContent = '▶ Nav';
-            } else {
-                // Start visible, not shrinking content
-                navFoldText.textContent = '◀ Nav';
-            }
+            // Apply nav fold preference (desktop only)
+            if (window.innerWidth > 1200) {
+                const navPanel = document.getElementById('navPanel');
+                const navFoldText = document.getElementById('navFoldText');
+                
+                if (navFolded === 'true') {
+                    navPanel.classList.add('folded');
+                    if (navFoldText) navFoldText.textContent = '▶ Nav';
+                } else {
+                    if (navFoldText) navFoldText.textContent = '◀ Nav';
+                }
 
-            // Apply chat fold preference
-            if (chatFolded === 'true') {
-                chatPanel.classList.add('folded');
-                chatFoldText.textContent = 'Chat ▶';
-            } else {
-                // Start visible, not shrinking content
-                chatFoldText.textContent = '◀ Chat';
+                // Apply chat fold preference (desktop only)
+                const chatPanel = document.querySelector('.chat-panel');
+                const chatFoldText = document.getElementById('chatFoldText');
+                
+                if (chatFolded === 'true') {
+                    chatPanel.classList.add('folded');
+                    if (chatFoldText) chatFoldText.textContent = 'Chat ▶';
+                } else {
+                    if (chatFoldText) chatFoldText.textContent = '◀ Chat';
+                }
             }
         });
     </script>

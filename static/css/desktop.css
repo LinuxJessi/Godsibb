@@ -1,0 +1,337 @@
+/*************************************
+ * GODSIBB DESKTOP STYLES
+ * For screens wider than 900px
+ * Three-column layout with sidebar navigation
+ *************************************/
+
+/*************************************
+ * HIDE MOBILE-ONLY ELEMENTS
+ *************************************/
+
+/* Critical: Hide ALL mobile elements on desktop */
+.bottom-nav,
+.chat-fab,
+.chat-sheet,
+.backdrop {
+    display: none !important;
+}
+
+/* Show desktop elements explicitly */
+.top-bar,
+.nav-panel,
+.chat-panel,
+.container,
+.main-grid {
+    display: block;
+}
+
+.main-grid {
+    display: grid;
+}
+
+.top-bar,
+.top-bar-left,
+.top-bar-right,
+.social-icons {
+    display: flex;
+}
+
+/*************************************
+ * TOP NAVIGATION BAR
+ *************************************/
+
+body {
+    padding-top: 75px; /* Account for fixed top bar */
+}
+
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 75px;
+    background: var(--primary);
+    border-bottom: 4px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 2000;
+    transition: background 0.3s ease;
+}
+
+.top-bar-left {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.top-bar-link {
+    color: white;
+    text-decoration: none;
+    font-family: 'VT323', monospace;
+    font-size: 1.3em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.2s;
+}
+
+.top-bar-link:hover {
+    color: var(--accent);
+}
+
+.top-bar-right {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-right: 20px;
+}
+
+.social-icon {
+    color: white;
+    font-size: 1.5em;
+    transition: color 0.2s;
+    text-decoration: none;
+}
+
+.social-icon:hover {
+    color: var(--accent);
+}
+
+.top-bar-toggle {
+    padding: 6px 12px;
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    border: 2px solid var(--border);
+    cursor: pointer;
+    font-family: 'VT323', monospace;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.top-bar-toggle:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.top-bar-toggle:active {
+    transform: scale(0.98);
+}
+
+/*************************************
+ * MAIN CONTENT GRID
+ *************************************/
+
+.container {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+}
+
+.main-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    position: relative;
+    width: 95%;
+    max-width: none;
+    margin: 0 auto;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Content shifts when panels are opened while scrolled */
+.main-grid.nav-open {
+    width: calc(95% - 295px);
+    margin-left: 295px;
+    margin-right: auto;
+}
+
+.main-grid.chat-open {
+    width: calc(95% - 290px);
+    margin-left: auto;
+    margin-right: 290px;
+}
+
+.main-grid.nav-open.chat-open {
+    width: calc(95% - 585px);
+    margin-left: 295px;
+    margin-right: 290px;
+}
+
+/*************************************
+ * SIDEBAR NAVIGATION PANEL
+ *************************************/
+
+.nav-panel {
+    position: fixed;
+    top: 95px;
+    left: 20px;
+    z-index: 100;
+    width: 280px;
+    max-height: calc(100vh - 115px);
+    overflow-y: auto;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
+}
+
+/* Panel visibility states */
+.nav-panel.folded {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.nav-panel.auto-hidden:not(.user-opened) {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.nav-panel .panel-content {
+    padding: 10px;
+}
+
+/*************************************
+ * CHAT PANEL
+ *************************************/
+
+.chat-panel {
+    position: fixed;
+    top: 95px;
+    right: 20px;
+    z-index: 100;
+    width: 280px;
+    max-height: calc(100vh - 115px);
+    overflow-y: auto;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 1;
+}
+
+.chat-panel.folded {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.chat-panel.auto-hidden:not(.user-opened) {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.chat-panel .panel-header {
+    background: var(--accent);
+}
+
+.chat-panel .panel-content {
+    padding: 10px;
+}
+
+/*************************************
+ * CENTER CONTENT PANEL
+ *************************************/
+
+.center-panel {
+    min-height: 600px;
+}
+
+.center-panel .panel-content {
+    padding: 20px;
+}
+
+.center-panel .panel-content p {
+    margin-bottom: 15px;
+}
+
+/*************************************
+ * STATUS INDICATORS
+ *************************************/
+
+.pips {
+    display: flex;
+    gap: 6px;
+}
+
+.pip {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.pip.active {
+    background: var(--accent-bright);
+    box-shadow: 0 0 8px var(--accent-bright);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Hide hamburger on desktop */
+.nav-toggle {
+    display: none;
+}
+
+/*************************************
+ * TABLET BREAKPOINT
+ * Hamburger menu appears
+ *************************************/
+
+@media (max-width: 1200px) {
+    .nav-toggle {
+        display: block;
+        position: fixed;
+        top: 85px;
+        left: 20px;
+        z-index: 101;
+        padding: 8px 15px;
+        background: var(--primary);
+        color: white;
+        border: 3px solid var(--border);
+        cursor: pointer;
+        font-family: 'VT323', monospace;
+        font-size: 1.2em;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.2s;
+    }
+
+    .nav-toggle:hover {
+        background: var(--primary-dark);
+    }
+
+    .nav-toggle:active {
+        transform: scale(0.98);
+    }
+
+    .nav-panel {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    .nav-panel.active {
+        transform: translateX(0);
+    }
+
+    /* Hide chat by default on tablet */
+    .chat-panel:not(.user-opened) {
+        transform: translateX(100%) !important;
+        transition: transform 0.3s ease;
+    }
+
+    .chat-panel.user-opened {
+        transform: translateX(0) !important;
+    }
+
+    .container {
+        padding: 20px;
+    }
+
+    .header {
+        padding: 40px 20px 20px 20px;
+    }
+}
