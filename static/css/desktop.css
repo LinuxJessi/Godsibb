@@ -69,7 +69,8 @@ body {
 .top-bar-link {
     color: white;
     text-decoration: none;
-    font-family: 'VT323', monospace;
+    font-family:  casablanca-urw, sans-serif; 
+    font-weight: bold;
     font-size: 1.3em;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -142,7 +143,7 @@ body {
     grid-template-columns: 1fr;
     gap: 20px;
     position: relative;
-    width: 95%;
+    width: 100%;
     max-width: none;
     margin: 0 auto;
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);

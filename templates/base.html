@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ url_for('static', path='css/base.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', path='css/desktop.css') }}" media="(min-width: 901px)">
     <link rel="stylesheet" href="{{ url_for('static', path='css/mobile.css') }}" media="(max-width: 900px)">
+    <link rel="stylesheet" href="https://use.typekit.net/syn2dzv.css">
 </head>
 <body>
     <!-- ═══════════════════════════════════════════════════════════════════ -->
@@ -62,15 +63,16 @@
             <a href="/" style="text-decoration: none; color: inherit;">
                 <div class="nav-item">Home</div>
             </a>
-            <div class="nav-item">Xenosaga Gallery</div>
-            <div class="nav-item">Xenogears Archive</div>
-            <div class="nav-item">Xenoblade Collection</div>
+            <div class="nav-item">Image Gallery</div>
+            <div class="nav-item">Download Archive</div>
+            <div class="nav-item">Preservation Tools</div>
             <div class="nav-item">Lore Database</div>
+            <div class="nav-item">Content Catalog</div>
             <div class="nav-item">Fan Creations</div>
             <a href="/blog" style="text-decoration: none; color: inherit;">
-                <div class="nav-item">Blog</div>
+                <div class="nav-item">Community Blog</div>
             </a>
-            <div class="nav-item">Settings</div>
+            <div class="nav-item">Our Story</div>
         </div>
     </div>
 
@@ -79,14 +81,17 @@
         <div class="header">
             <div class="logo-container">
                 <a href="/" style="text-decoration: none;">
-                    <img src="{{ url_for('static', path='images/Godsibb_logo.png') }}" 
+            <!---     <img src="{{ url_for('static', path='images/Godsibb_logo.png') }}" 
                          alt="Godsibb Logo" 
-                         style="width: 100%; height: 100%; object-fit: contain;">
+                         style="width: 100%; height: 100%; object-fit: contain;">-->   
+                         <h1>Godsibb.net</h1>
                 </a>
                 <div class="tagline">{% block header_subtitle %}Archiving Xeno since 2009{% endblock %}</div>
             </div>
             <div class="character-image">
-                350 x 350<br>Character Image<br>Placeholder
+                 <img src="{{ url_for('static', path='images/melia.png') }}" 
+                         alt="Godsibb Logo" 
+                         style="width: 100%; height: 100%; object-fit: contain;">
             </div>
         </div>
 
@@ -107,8 +112,12 @@
                     <div class="post-meta">
                         <span class="post-author">Posted by: Jessi</span> • <span class="post-date">January 6, 2026</span>
                     </div>
-                    <h1 class="title" style="font-family: 'VT323', monospace; font-size: 2em; color: var(--primary); margin: 20px 0;">Default Content</h1>
-                    <p class="content" style="line-height: 1.6;">This is the default content. Override the content block in your template.</p>
+                    <h1 class="title">Default Content</h1>
+                    <p class="content" style="line-height: 1.6;"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur placerat ante ex. Cras blandit massa ac velit convallis, nec lobortis dolor facilisis. Duis malesuada lacinia augue, maximus euismod est vehicula eget. Nunc elementum lectus volutpat nunc volutpat, vel dignissim dolor convallis. Aliquam egestas orci eu arcu ullamcorper, a euismod augue porttitor. Aenean efficitur auctor pretium. Aliquam id ultrices magna. Vivamus ligula felis, dignissim maximus diam et, porta gravida massa. Nam eget posuere nibh. Donec quis euismod libero. Sed bibendum mauris in justo rhoncus bibendum. Sed leo purus, auctor ac augue at, lacinia pharetra enim. Sed tellus enim, tincidunt at dignissim vel, malesuada egestas mi. Aenean eu malesuada nulla, eu malesuada arcu.
+<br/>
+Vestibulum nec sollicitudin massa, fringilla convallis magna. Vestibulum venenatis vel lacus at sodales. Duis convallis dignissim ipsum aliquet hendrerit. Ut faucibus semper lectus in auctor. Pellentesque mollis ornare eleifend. Sed ac erat eu diam tincidunt lacinia non quis mi. Phasellus quis nulla suscipit, maximus metus ut, mollis tellus. Integer sed sapien neque. Vestibulum vitae sapien sagittis, blandit tellus eu, imperdiet neque. Duis nunc arcu, dignissim vel elit non, accumsan tristique est. Nulla vitae risus id diam rutrum viverra. Nunc in arcu ipsum. Ut vulputate efficitur tortor at rutrum.
+<br/>
+Quisque a suscipit lectus, at elementum lorem. Nam eu diam vitae velit euismod maximus. Etiam eu eros non nulla sollicitudin pretium. Cras nec ornare tellus, at placerat lacus. Phasellus sed libero id turpis scelerisque consequat at nec ex. Aenean eu interdum urna. Quisque luctus est mauris, quis tempus leo congue nec. In dapibus erat risus, quis euismod nulla dapibus vitae. Nulla nulla nibh, faucibus eu arcu non, euismod accumsan velit. Maecenas imperdiet nec ante ac sollicitudin. Aliquam est eros, tempus sit amet libero ac, malesuada mattis mauris. </p>
                     {% endblock %}
                 </div>
             </div>

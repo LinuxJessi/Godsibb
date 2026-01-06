@@ -29,7 +29,7 @@
     --primary-dark: #6D28D9;
     --accent: #06B6D4;
     --accent-bright: #22D3EE;
-    --highlight: #F59E0B;
+    --highlight: #CE62B8;
     --background: #DDD6F3;
     --content: #FFFFFF;
     --text: #3F3F46;
@@ -64,7 +64,7 @@ body.dark-mode {
  *************************************/
 
 body {
-    font-family: 'Courier New', monospace;
+    font-family: "owners-text", sans-serif;
     background: var(--background);
     color: var(--text);
     min-height: 100vh;
@@ -170,7 +170,7 @@ body.hide-pattern::before {
  *************************************/
 
 .retro-text {
-    font-family: 'VT323', monospace;
+    font-family: casablanca-urw, sans-serif; 
     letter-spacing: 1px;
 }
 
@@ -189,7 +189,7 @@ body.hide-pattern::before {
     color: white;
     padding: 12px;
     border-bottom: 3px solid var(--border);
-    font-family: 'VT323', monospace;
+    font-family: casablanca-urw, sans-serif; 
     font-size: 1.3em;
     text-transform: uppercase;
     letter-spacing: 2px;
@@ -222,6 +222,17 @@ body.hide-pattern::before {
     gap: 40px;
 }
 
+.header h1{
+    font-size: 6em;
+    font-family: ekamai, sans-serif;
+    color: var(--primary);
+     -webkit-text-stroke-width: 2px; /* Set the width of the outline */
+     -webkit-text-stroke-color: black; /* Set the color of the outline */
+  /* Standard property for future compatibility (not yet widely implemented) */
+    text-stroke: 2px black; 
+    margin: 20px 0 10px 0;
+}
+
 .logo-container {
     width: 350px;
     height: 350px;
@@ -238,34 +249,30 @@ body.hide-pattern::before {
 }
 
 .tagline {
-    font-family: 'VT323', monospace;
-    font-size: 1.4em;
+    font-family: casablanca-urw, sans-serif; 
+    font-size: 2em;
+    font-weight: bold;
     color: var(--highlight);
-    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.3);
-    letter-spacing: 2px;
+     -webkit-text-stroke-width: 1.5px; /* Set the width of the outline */
+     -webkit-text-stroke-color: black; /* Set the color of the outline */
+  /* Standard property for future compatibility (not yet widely implemented) */
+    text-stroke: 1.5px black; 
 }
 
+
 .character-image {
-    width: 350px;
-    height: 350px;
-    border: 4px dashed var(--border);
-    background: rgba(255, 255, 255, 0.1);
+    width: 400px;
+    height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--text);
-    font-family: 'VT323', monospace;
+    font-family: casablanca-urw, sans-serif; 
     font-size: 1.2em;
     text-align: center;
     padding: 20px;
     transition: all 0.3s ease;
-    opacity: 0.5;
     flex-shrink: 0;
-}
-
-.character-image:hover {
-    opacity: 1;
-    background: rgba(255, 255, 255, 0.2);
 }
 
 /*************************************
@@ -332,7 +339,7 @@ body.dark-mode .chat-message {
  *************************************/
 
 .post-meta {
-    font-family: 'VT323', monospace;
+    font-family: casablanca-urw, sans-serif; 
     font-size: 1.1em;
     color: var(--primary);
     margin-bottom: 15px;
@@ -359,7 +366,7 @@ body.dark-mode .chat-message {
     padding: 15px 20px;
     text-align: center;
     color: var(--text);
-    font-family: 'VT323', monospace;
+    font-family: casablanca-urw, sans-serif; 
     position: relative;
     z-index: 2;
 }
@@ -409,7 +416,7 @@ body.dark-mode .chat-message {
  *************************************/
 
 .title {
-    font-family: 'VT323', monospace;
+    font-family:  ekamai, sans-serif; 
     font-size: 2em;
     color: var(--primary);
     margin: 20px 0 10px 0;
@@ -418,7 +425,7 @@ body.dark-mode .chat-message {
 }
 
 .subtitle {
-    font-family: 'VT323', monospace;
+    font-family: casablanca-urw, sans-serif; 
     font-size: 1.3em;
     color: var(--accent);
     margin: 10px 0 20px 0;
@@ -434,8 +441,15 @@ body.dark-mode .chat-message {
     margin-bottom: 15px;
 }
 
-.content h1, .content h2, .content h3 {
-    font-family: 'VT323', monospace;
+.content h1{
+    font-family: ekamai, sans-serif;
+    color: var(--primary);
+    margin: 20px 0 10px 0;
+}
+
+
+.content h2, .content h3 {
+    font-family: casablanca-urw, sans-serif; 
     color: var(--primary);
     margin: 20px 0 10px 0;
 }
