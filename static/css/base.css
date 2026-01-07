@@ -473,20 +473,55 @@ body.dark-mode .chat-message {
  *************************************/
 
 @media (max-width: 1400px) {
-    .logo-container,
-    .character-image {
+    .logo-container {
         width: 280px;
         height: 280px;
     }
+
+    .character-image {
+        width: 320px;
+        height: 320px;
+    }
 }
 
+/* Tablet/iPad range (768px-1024px) */
 @media (max-width: 1200px) {
-    .logo-container,
+    .header h1 {
+        font-size: 4em;
+    }
+
+    .tagline {
+        font-size: 1.5em;
+    }
+
+    .logo-container {
+        width: 220px;
+        height: 220px;
+    }
+
     .character-image {
+        width: 350px;
+        height: 350px;
+    }
+
+    .header {
+        gap: 30px;
+        padding-top: 60px;
+    }
+}
+
+/* Smaller tablets */
+@media (max-width: 1024px) {
+    .logo-container {
         width: 200px;
         height: 200px;
     }
-    
+
+    .character-image {
+        width: 300px;
+        height: 300px;
+    }
+
     .header {
         gap: 20px;
     }

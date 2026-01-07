@@ -20,7 +20,7 @@
     <div class="top-bar">
         <div class="top-bar-left">
             <button class="top-bar-toggle" onclick="toggleNavFold()" style="margin-right: 10px;">
-                <span id="navFoldText">◀ Nav</span>
+                <span id="navFoldText">◀ Menu</span>
             </button>
             <a href="https://scientia.godsibb.net" class="top-bar-link">Scientia</a>
             <a href="https://unus-mund.us" class="top-bar-link">Unus-Mund.us</a>
@@ -44,15 +44,10 @@
         </div>
     </div>
 
-    <!-- Navigation Toggle Button (Hamburger Menu - Tablet Only) -->
-    <button class="nav-toggle" onclick="toggleNav()">
-        <span id="navText">☰ MENU</span>
-    </button>
-
     <!-- Navigation Panel (Fixed Position - Desktop/Tablet) -->
     <div class="panel nav-panel" id="navPanel">
         <div class="panel-header">
-            <div class="panel-title">Navigation</div>
+            <div class="panel-title">Menu</div>
             <div class="pips">
                 <div class="pip active"></div>
                 <div class="pip active"></div>
@@ -303,39 +298,46 @@ Ut sed nulla semper, ultrices tortor a, venenatis dolor. Vestibulum tempor, nunc
         // DESKTOP NAVIGATION & CHAT PANELS
         // ═══════════════════════════════════════════════════════════════
 
-        // Navigation fold/unfold toggle
+        // Menu toggle - works for both desktop and tablet
         function toggleNavFold() {
             const navPanel = document.getElementById('navPanel');
             const mainGrid = document.getElementById('mainGrid');
             const navFoldText = document.getElementById('navFoldText');
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const isMobile = window.innerWidth <= 1200;
-            
-            if (isMobile) {
-                // Tablet/Mobile: Toggle hamburger menu
+            const isTablet = window.innerWidth <= 1200;
+
+            if (isTablet) {
+                // Tablet: Toggle menu panel visibility
                 navPanel.classList.toggle('active');
+
+                // Update button text for tablet
+                if (navPanel.classList.contains('active')) {
+                    navFoldText.textContent = '✕ Menu';
+                } else {
+                    navFoldText.textContent = '☰ Menu';
+                }
             } else {
                 // Desktop: Toggle fold/unfold
-                const isHidden = navPanel.classList.contains('folded') || 
+                const isHidden = navPanel.classList.contains('folded') ||
                                (navPanel.classList.contains('auto-hidden') && !navPanel.classList.contains('user-opened'));
-                
+
                 if (isHidden) {
                     navPanel.classList.remove('folded');
                     navPanel.classList.remove('auto-hidden');
                     navPanel.classList.add('user-opened');
-                    
-                    if (scrollTop > 50) {  // Changed from 100 to 50
+
+                    if (scrollTop > 50) {
                         mainGrid.classList.add('nav-open');
                     }
-                    
-                    navFoldText.textContent = '◀ Nav';
+
+                    navFoldText.textContent = '◀ Menu';
                     localStorage.setItem('navFolded', 'false');
                 } else {
                     navPanel.classList.add('folded');
                     navPanel.classList.remove('user-opened');
                     navPanel.classList.remove('auto-hidden');
                     mainGrid.classList.remove('nav-open');
-                    navFoldText.textContent = '▶ Nav';
+                    navFoldText.textContent = '▶ Menu';
                     localStorage.setItem('navFolded', 'true');
                 }
             }
@@ -406,22 +408,18 @@ Ut sed nulla semper, ultrices tortor a, venenatis dolor. Vestibulum tempor, nunc
             }, 50); // Reduced from 100ms to 50ms for more responsive feel
         });
 
-        // Navigation panel toggle (for tablet)
-        function toggleNav() {
-            const navPanel = document.getElementById('navPanel');
-            navPanel.classList.toggle('active');
-        }
-
-        // Close nav when clicking outside on tablet
+        // Close menu when clicking outside on tablet
         document.addEventListener('click', (e) => {
             const navPanel = document.getElementById('navPanel');
-            const navToggle = document.querySelector('.nav-toggle');
-            
-            if (window.innerWidth <= 1200 && 
-                !navPanel.contains(e.target) && 
-                navToggle && !navToggle.contains(e.target) &&
+            const menuButton = document.querySelector('.top-bar-toggle');
+
+            if (window.innerWidth <= 1200 &&
+                !navPanel.contains(e.target) &&
+                menuButton && !menuButton.contains(e.target) &&
                 navPanel.classList.contains('active')) {
                 navPanel.classList.remove('active');
+                const navFoldText = document.getElementById('navFoldText');
+                if (navFoldText) navFoldText.textContent = '☰ Menu';
             }
         });
 
@@ -469,28 +467,32 @@ Ut sed nulla semper, ultrices tortor a, venenatis dolor. Vestibulum tempor, nunc
                 if (patternText) patternText.textContent = 'Show BG';
             }
 
-            // Apply nav fold preference (desktop only)
+            // Apply menu fold preference (desktop only)
             if (window.innerWidth > 1200) {
                 const navPanel = document.getElementById('navPanel');
                 const navFoldText = document.getElementById('navFoldText');
-                
+
                 if (navFolded === 'true') {
                     navPanel.classList.add('folded');
-                    if (navFoldText) navFoldText.textContent = '▶ Nav';
+                    if (navFoldText) navFoldText.textContent = '▶ Menu';
                 } else {
-                    if (navFoldText) navFoldText.textContent = '◀ Nav';
+                    if (navFoldText) navFoldText.textContent = '◀ Menu';
                 }
 
                 // Apply chat fold preference (desktop only)
                 const chatPanel = document.querySelector('.chat-panel');
                 const chatFoldText = document.getElementById('chatFoldText');
-                
+
                 if (chatFolded === 'true') {
                     chatPanel.classList.add('folded');
                     if (chatFoldText) chatFoldText.textContent = 'Chat ▶';
                 } else {
                     if (chatFoldText) chatFoldText.textContent = '◀ Chat';
                 }
+            } else {
+                // Tablet: Set initial menu button text
+                const navFoldText = document.getElementById('navFoldText');
+                if (navFoldText) navFoldText.textContent = '☰ Menu';
             }
         });
     </script>
