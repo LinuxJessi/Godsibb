@@ -51,13 +51,14 @@ body {
     width: 100%;
     height: 75px;
     background: var(--primary);
-    border-bottom: 4px solid var(--border);
+    border-bottom: var(--border-medium) solid rgba(0, 0, 0, 0.2);
+    box-shadow: var(--shadow-md);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 20px;
+    padding: 0 var(--spacing-lg);
     z-index: 2000;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
 }
 
 .top-bar-left {
@@ -105,25 +106,30 @@ body {
 }
 
 .top-bar-toggle {
-    padding: 6px 12px;
-    background: rgba(0, 0, 0, 0.3);
+    padding: var(--spacing-xs) var(--spacing-md);
+    background: rgba(0, 0, 0, 0.2);
     color: white;
-    border: 2px solid var(--border);
+    border: var(--border-subtle) solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-sm);
     cursor: pointer;
     font-family: 'VT323', monospace;
     font-size: 0.9em;
     text-transform: uppercase;
     letter-spacing: 1px;
-    transition: all 0.2s;
+    transition: all 0.2s ease;
     white-space: nowrap;
+    box-shadow: var(--shadow-sm);
 }
 
 .top-bar-toggle:hover {
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.3);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-1px);
 }
 
 .top-bar-toggle:active {
-    transform: scale(0.98);
+    transform: translateY(0);
+    box-shadow: var(--shadow-sm);
 }
 
 /*************************************
@@ -135,7 +141,7 @@ body {
     z-index: 2;
     width: 100%;
     margin: 0;
-    padding: 20px;
+    padding: var(--spacing-lg);
 }
 
 .main-grid {
@@ -175,12 +181,12 @@ body {
 .nav-panel {
     position: fixed;
     top: 95px;
-    left: 20px;
+    left: var(--spacing-lg);
     z-index: 100;
     width: 280px;
     max-height: calc(100vh - 115px);
     overflow-y: auto;
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
     opacity: 1;
 }
 
@@ -196,7 +202,11 @@ body {
 }
 
 .nav-panel .panel-content {
-    padding: 10px;
+    padding: var(--spacing-sm);
+}
+
+.nav-panel:not(.folded):not(.auto-hidden) {
+    box-shadow: var(--shadow-lg);
 }
 
 /*************************************
@@ -206,12 +216,12 @@ body {
 .chat-panel {
     position: fixed;
     top: 95px;
-    right: 20px;
+    right: var(--spacing-lg);
     z-index: 100;
     width: 280px;
     max-height: calc(100vh - 115px);
     overflow-y: auto;
-    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
     opacity: 1;
 }
 
@@ -230,7 +240,11 @@ body {
 }
 
 .chat-panel .panel-content {
-    padding: 10px;
+    padding: var(--spacing-sm);
+}
+
+.chat-panel:not(.folded):not(.auto-hidden) {
+    box-shadow: var(--shadow-lg);
 }
 
 /*************************************
@@ -242,7 +256,7 @@ body {
 }
 
 .center-panel .panel-content {
-    padding: 20px;
+    padding: var(--spacing-xl);
 }
 
 .center-panel .panel-content p {
@@ -260,13 +274,13 @@ body {
 
 .pip {
   position: relative;
-  width: 15px; /* Reduced by 50% from 30px */
-  aspect-ratio: 1 / 1; 
-  background: gray; 
-  border: 1px solid black; /* Border reduced by 50% from 2px */
-  /* Drop shadow applied to the box itself */
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-  /* Remove any previous text-shadow or box-shadow rules here */
+  width: 15px;
+  aspect-ratio: 1 / 1;
+  background: gray;
+  border: var(--border-subtle) solid rgba(0, 0, 0, 0.3);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.2s ease;
 }
 
 .pip::before {
@@ -284,6 +298,7 @@ body {
 
 .pip.active {
     background: var(--accent-bright);
+    box-shadow: var(--shadow-md), 0 0 8px var(--accent-bright);
     animation: pulse 2s ease-in-out infinite;
 }
 
@@ -303,26 +318,31 @@ body {
         display: block;
         position: fixed;
         top: 85px;
-        left: 20px;
+        left: var(--spacing-lg);
         z-index: 101;
-        padding: 8px 15px;
+        padding: var(--spacing-sm) var(--spacing-md);
         background: var(--primary);
         color: white;
-        border: 3px solid var(--border);
+        border: var(--border-subtle) solid rgba(0, 0, 0, 0.2);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-md);
         cursor: pointer;
         font-family: 'VT323', monospace;
         font-size: 1.2em;
         text-transform: uppercase;
         letter-spacing: 1px;
-        transition: all 0.2s;
+        transition: all 0.2s ease;
     }
 
     .nav-toggle:hover {
         background: var(--primary-dark);
+        box-shadow: var(--shadow-lg);
+        transform: translateY(-2px);
     }
 
     .nav-toggle:active {
-        transform: scale(0.98);
+        transform: translateY(0);
+        box-shadow: var(--shadow-md);
     }
 
     .nav-panel {
